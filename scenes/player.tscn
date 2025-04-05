@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1sc1w4l3f72o"]
+[gd_scene load_steps=6 format=3 uid="uid://c1sc1w4l3f72o"]
 
 [ext_resource type="Script" uid="uid://dta5aj37sfamm" path="res://scripts/Player.cs" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://dgqayw5t3po57" path="res://assets/circle-16.png" id="2_g2els"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
 albedo_color = Color(0.963617, 0.121957, 0.251386, 1)
@@ -26,3 +27,10 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.917222, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Circle-16" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(569, 332)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_g2els")

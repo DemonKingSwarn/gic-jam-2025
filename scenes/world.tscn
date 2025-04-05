@@ -1,19 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqlxt26vablrx"]
+[gd_scene load_steps=7 format=3 uid="uid://cqlxt26vablrx"]
 
 [ext_resource type="PackedScene" uid="uid://c1sc1w4l3f72o" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Texture2D" uid="uid://dacideu6pwe78" path="res://skybox/clear_sky.exr" id="1_rwgxs"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4wyf3"]
+panorama = ExtResource("1_rwgxs")
 
 [sub_resource type="Sky" id="Sky_rwgxs"]
-sky_material = SubResource("ProceduralSkyMaterial_nnsk1")
+sky_material = SubResource("PanoramaSkyMaterial_4wyf3")
 
 [sub_resource type="Environment" id="Environment_4wyf3"]
 background_mode = 2
 sky = SubResource("Sky_rwgxs")
 tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwgxs"]
+albedo_color = Color(0.0605303, 0.0605303, 0.0605303, 1)
 
 [node name="World" type="Node3D"]
 
@@ -27,6 +32,7 @@ environment = SubResource("Environment_4wyf3")
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_rwgxs")
 
 [node name="Player" parent="." instance=ExtResource("1_nnsk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84566, 2.64593, 35.2075)

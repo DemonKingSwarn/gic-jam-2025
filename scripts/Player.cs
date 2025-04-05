@@ -9,7 +9,7 @@ public partial class Player : CharacterBody3D
     [Export] float bobAmp = 0.08f;
     float tBob = 0f;
 
-    float gravity = -9.8f;
+    float gravity = 9.8f;
 
     Vector3 velocity;
 
@@ -25,7 +25,7 @@ public partial class Player : CharacterBody3D
     {
         if(!IsOnFloor())
         {
-            velocity.Y += gravity * (float)delta;
+            velocity.Y -= gravity * (float)delta;
         }
 
         if(Input.IsActionJustPressed("ui_accept") && IsOnFloor())
@@ -72,7 +72,7 @@ public partial class Player : CharacterBody3D
             InputEventMouseMotion m = (InputEventMouseMotion)ev;
             head.RotateY(-m.Relative.X * mouseSens);
             cam.RotateX(-m.Relative.Y * mouseSens);
-            float newCameraX = Mathf.Clamp(cam.Rotation.X, Mathf.DegToRad(-40f), Mathf.DegToRad(60f));
+            float newCameraX = Mathf.Clamp(cam.Rotation.X, Mathf.DegToRad(-89f), Mathf.DegToRad(89f));
             cam.Rotation = new Vector3(newCameraX, cam.Rotation.Y, cam.Rotation.Z);
         }
     }
